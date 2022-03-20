@@ -65,7 +65,10 @@ ul li {
   list-style: none;
 }
 img {
-  vertical-align: top;
+  /* vertical-align: top; */
+  max-width: 100%;
+  height: auto;
+  /* border-radius: 10%; */
 }
 
 h1,
@@ -80,4 +83,78 @@ h6 {
 /* ====================================== */
 .test {
   color: green;
+}
+html {
+  font-size: 100%;
+
+  /*  Scales by 1px for every 100px from 600px onwards */
+  @media (min-width: 600px) {
+    font-size: calc(112.5% + 4 * (100vw - 600px) / 400);
+  }
+
+  /*  Sets font-size to 22px after a viewport of 1000px */
+  @media (min-width: 1000px) {
+    font-size: calc(137.5%);
+  }
+}
+ul,
+ol {
+  list-style: none;
+}
+/* technical classes */
+._main-container {
+  margin: auto;
+  max-width: 1200px;
+  font-size: 1rem;
+  position: relative;
+  padding: 2rem;
+  border: 1px solid red;
+  /* overflow: hidden; */
+  font-family: "Open Sans", sans-serif;
+  /* padding-top: 55px; */
+}
+._flex {
+  display: flex;
+}
+._center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+._comumn {
+  flex-direction: column;
+}
+
+/* main css */
+.separator {
+  background-color: rgb(112, 79, 189);
+  height: 2px;
+  width: 100%;
+  margin: 50px 0px;
+}
+/* ==============input fields================== */
+#search,
+#order {
+  border: 1px solid #767676;
+}
+/* ============================================ */
+.phones-list {
+}
+.phone-item {
+  border: 1px solid #767676;
+  border-radius: 5px;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+}
+.phone-prev {
+  width: 5rem;
+  height: auto;
+}
+.phone-info {
+}
+.phone-title {
+  color: #23527c;
+}
+.phone-description {
 }
