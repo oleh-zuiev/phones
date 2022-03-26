@@ -1,4 +1,7 @@
 const mainContainerEl = document.querySelector('.js-maincontainer');
+let inputEl;
+let orderEl;
+let listContainerEl;
 // =====================================================================
 function createInput() {
     let input= document.createElement('section');
@@ -7,6 +10,7 @@ function createInput() {
         <div class="_flex">
           <p>Sort by:</p>
           <select name="order" id="order">
+            <option>choose type of sorting</option>
             <option value="alphabetical">alphabetical</option>
             <option value="newest">newest</option>
           </select>
@@ -33,7 +37,7 @@ function createInput() {
 // }
 // =================================================================
 function generateList() {
-    let phonesList = document.createElement('section');
+    listContainerEl.innerHTML = '';
     for (const item of phones) {
         let phoneItem = document.createElement('div');
         phoneItem.classList.add('phone-item');
@@ -46,29 +50,62 @@ function generateList() {
               ${item.snippet}
              </div>
           </div>`
-        phonesList.append(phoneItem);
+        listContainerEl.append(phoneItem);
     }
     
-    mainContainerEl.append(phonesList);
 }
-// ===========================================
-window.addEventListener('load', function () {
-    createInput();
-    const inputEl = document.querySelector('#search');
-    const orderEl = document.querySelector('#order');
+// ==========================================
+function sortPhones() {
+        if (orderEl.value === 'alphabetical') {
+            console.log('abc');
+        phones = phones.sort(function (a, b) {
+        if (a.name > b.name) {
+         return 1;
+        }
+        if (a.name < b.name) {
+         return -1;
+         }
+        return 0;
+        });
+        console.log(phones);        
+        return phones;          
+        }
+        if(orderEl.value==='newest'){
+            phones = phones.sort(function (a, b) {
+                console.log('123');
+            return a.age - b.age;
+            })
+            console.log(phones);
+        return phones;  
+        }
+        // console.log(phones);
+        // return phones;
+}
+    // ------------------
     function searchPhonesInfo() {
     console.log(inputEl.value);
-    }
-    function sortPhones() {
-        if (orderEl.value === 'alphabetical') {
-            console.log('ABC');  
-        }else{}
-    }
-    inputEl.addEventListener('input', function () {
+} 
+function generateHomePage() {
+    createInput();
+    listContainerEl = document.createElement('section');
+    mainContainerEl.append(listContainerEl);
+    generateList();
+        inputEl = document.querySelector('#search');
+    orderEl = document.querySelector('#order');
+    orderEl.addEventListener('change', function () {
+        console.log('rendering sorted list');
+        sortPhones();
+        generateList();
+});
+inputEl.addEventListener('input', function () {
         searchPhonesInfo();
     });
-    orderEl.addEventListener('change', function () {
-        sortPhones();
-    });
-    generateList();
+    }
+// ===========================================
+generateHomePage();
+    
+
+
+window.addEventListener('load', function () {
+ console.log('ready');
 });
