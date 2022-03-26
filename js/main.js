@@ -10,7 +10,6 @@ function createInput() {
         <div class="_flex">
           <p>Sort by:</p>
           <select name="order" id="order">
-            <option>choose type of sorting</option>
             <option value="alphabetical">alphabetical</option>
             <option value="newest">newest</option>
           </select>
