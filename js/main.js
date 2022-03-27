@@ -2,6 +2,7 @@ const mainContainerEl = document.querySelector('.js-maincontainer');
 let inputEl;
 let orderEl;
 let listContainerEl;
+let filteredPhones;
 // =====================================================================
 function createInput() {
     let input= document.createElement('section');
@@ -81,7 +82,7 @@ function sortPhones() {
         // return phones;
 }
     // ------------------
-    function searchPhonesInfo() {
+function searchPhonesInfo() {
     console.log(inputEl.value);
 } 
 function generateHomePage() {
@@ -89,17 +90,17 @@ function generateHomePage() {
     listContainerEl = document.createElement('section');
     mainContainerEl.append(listContainerEl);
     generateList();
-        inputEl = document.querySelector('#search');
+    inputEl = document.querySelector('#search');
     orderEl = document.querySelector('#order');
+    inputEl.addEventListener('input', function () {
+        searchPhonesInfo();
+    });
     orderEl.addEventListener('change', function () {
         console.log('rendering sorted list');
         sortPhones();
         generateList();
-});
-inputEl.addEventListener('input', function () {
-        searchPhonesInfo();
     });
-    }
+}
 // ===========================================
 generateHomePage();
     
