@@ -162,3 +162,6 @@ ol {
 }
 .phone-description {
 }
+.hidden {
+  display: none;
+}

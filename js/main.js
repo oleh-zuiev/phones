@@ -2,7 +2,12 @@ const mainContainerEl = document.querySelector('.js-maincontainer');
 let inputEl;
 let orderEl;
 let listContainerEl;
-let filteredPhones;
+let filteredPhones = [];
+let sortedPhones = [];
+let phonesCopy;
+let timeout = null;
+let userSeeking = false;//don't know for sure if I need it
+phonesCopy = phones;
 // =====================================================================
 function createInput() {
     let input= document.createElement('section');
@@ -37,8 +42,9 @@ function createInput() {
 // }
 // =================================================================
 function generateList() {
+    // create one more array; and change phones into it
     listContainerEl.innerHTML = '';
-    for (const item of phones) {
+    for (const item of phonesCopy) {
         let phoneItem = document.createElement('div');
         phoneItem.classList.add('phone-item');
         phoneItem.innerHTML =  `<div class="phone-prev">
@@ -52,13 +58,17 @@ function generateList() {
           </div>`
         listContainerEl.append(phoneItem);
     }
-    
+    phonesCopy = phones;
 }
 // ==========================================
 function sortPhones() {
+
+    if (userSeeking) {
+        phonesCopy = filteredPhones;
+        }
         if (orderEl.value === 'alphabetical') {
-            console.log('abc');
-        phones = phones.sort(function (a, b) {
+            // console.log('abc');
+        phonesCopy = phonesCopy.sort(function (a, b) {
         if (a.name > b.name) {
          return 1;
         }
@@ -67,23 +77,37 @@ function sortPhones() {
          }
         return 0;
         });
-        console.log(phones);        
-        return phones;          
+        // console.log(phonesCopy);        
+        return phonesCopy;          
         }
         if(orderEl.value==='newest'){
-            phones = phones.sort(function (a, b) {
-                console.log('123');
+            phonesCopy = phonesCopy.sort(function (a, b) {
+                // console.log('123');
             return a.age - b.age;
             })
-            console.log(phones);
-        return phones;  
+            // console.log(phonesCopy);
+        return phonesCopy;  
         }
-        // console.log(phones);
-        // return phones;
+        // console.log(phonesCopy);
+        // return phonesCopy;
 }
     // ------------------
 function searchPhonesInfo() {
-    console.log(inputEl.value);
+    //можно ще зробити через клас 'hide'
+    userSeeking = true;
+    filteredPhones = [];
+    const inputValue = inputEl.value.toLowerCase().trim();
+    // console.log(inputEl.value);
+    // console.log(typeof (inputEl.value));
+    // console.log(phonesCopy);
+    for (const item of phonesCopy) {
+        if (item.name.toLowerCase().includes(inputValue)) {
+            filteredPhones.push(item);
+        }
+    }
+    phonesCopy = filteredPhones;
+    generateList();
+    console.log('filteredPhones:',filteredPhones);
 } 
 function generateHomePage() {
     createInput();
@@ -93,14 +117,22 @@ function generateHomePage() {
     inputEl = document.querySelector('#search');
     orderEl = document.querySelector('#order');
     inputEl.addEventListener('input', function () {
-        searchPhonesInfo();
+        clearTimeout(timeout);
+        timeout = setTimeout(function () {
+            console.log('Value:', inputEl.value);
+            searchPhonesInfo();            
+        }, 2000);
+        // think or ask if here needed timer or smth else instead of 'blur'
     });
     orderEl.addEventListener('change', function () {
         console.log('rendering sorted list');
         sortPhones();
         generateList();
     });
-}
+    // let allPhones = document.querySelectorAll('.phone-item');
+    // const trueAllphones = Array.from(allPhones);
+    // console.log(trueAllphones);
+}   
 // ===========================================
 generateHomePage();
     
