@@ -121,7 +121,7 @@ function generateHomePage() {
         timeout = setTimeout(function () {
             console.log('Value:', inputEl.value);
             searchPhonesInfo();            
-        }, 2000);
+        }, 1000);
         // think or ask if here needed timer or smth else instead of 'blur'
     });
     orderEl.addEventListener('change', function () {

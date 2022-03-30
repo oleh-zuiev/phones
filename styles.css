@@ -129,10 +129,11 @@ ol {
 
 /* main css */
 .separator {
-  background-color: rgb(112, 79, 189);
-  height: 2px;
+  margin-top: 1rem;
+  background-color: #333333;
+  height: 1px;
   width: 100%;
-  margin: 50px 0px;
+  /* margin: 50px 0px; */
 }
 /* ==============input fields================== */
 #search,
@@ -164,4 +165,59 @@ ol {
 }
 .hidden {
   display: none;
+}
+/* ==========about-phone page============ */
+.overview {
+}
+.big-img-container {
+  transition: 0.5s linear all;
+}
+.big-img {
+  width: 400px;
+  height: 400px;
+  /* transition: 0.5s linear all; */
+}
+.thumbnails-container {
+}
+.title {
+  font-size: 36px;
+  font-weight: 500;
+}
+.general-info {
+  text-align: justify;
+  padding: 1rem 0rem;
+}
+.thumbs-list {
+  padding: 1rem 0rem;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 1rem 0rem;
+}
+.thumb {
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+  border: 1px solid rgb(56, 54, 54);
+  width: auto;
+  height: auto;
+  margin: 0.5rem 0.5rem 0rem 0rem;
+}
+.specs {
+}
+.specs-list {
+  /* justify-content: space-between; */
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+.specs-item {
+}
+.spec-title {
+  font-size: 16px;
+  font-weight: bold;
+}
+.spec-subtitle {
+  font-size: 14px;
+  font-weight: bold;
+}
+.text {
 }
