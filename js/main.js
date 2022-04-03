@@ -43,15 +43,16 @@ function createInput() {
 // =================================================================
 function generateList() {
     // create one more array; and change phones into it
+    const sign ='#'
     listContainerEl.innerHTML = '';
     for (const item of phonesCopy) {
         let phoneItem = document.createElement('div');
         phoneItem.classList.add('phone-item');
         phoneItem.innerHTML =  `<div class="phone-prev">
-            <img src="${item.imageUrl}" alt="${item.id}" />
+            <a href=${sign+item.age}><img src="${item.imageUrl}" alt="${item.id}" /></a>
                                  </div>
           <div class="phone-info _column">
-             <div class="phone-title">${item.name}</div>
+             <div class="phone-title"><a href=${sign+item.age}>${item.name}</a></div>
              <div class="phone-description">
               ${item.snippet}
              </div>
@@ -138,6 +139,26 @@ generateHomePage();
     
 
 
-window.addEventListener('load', function () {
- console.log('ready');
+// ==========================================================
+
+window.addEventListener('hashchange', function () {
+    // console.log(location.hash);
+    // generateAboutPageContainer(location.hash);
+    if (location.hash) {
+        console.log('hash is present');
+        generateAboutPageContainer(location.hash);
+
+    }
+    else {
+        console.log('no hash');
+        if ( mainContainerEl.hasChildNodes() ) {
+        mainContainerEl.removeChild( mainContainerEl.childNodes[0] );
+        }
+        // if (mainContainerEl.hasChildNodes()) {
+        //   console.dir(mainContainerEl.childNodes);  
+        // }
+        generateHomePage();
+
+    }
+
 });
