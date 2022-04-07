@@ -7,7 +7,7 @@ let sortedPhones = [];
 let phonesCopy;
 let timeout = null;
 let userSeeking = false;//don't know for sure if I need it
-phonesCopy = phones;
+phonesCopy =[...phones] ;
 // =====================================================================
 function createInput() {
     let input= document.createElement('section');
@@ -42,7 +42,6 @@ function createInput() {
 // }
 // =================================================================
 function generateList() {
-    // create one more array; and change phones into it
     const sign ='#'
     listContainerEl.innerHTML = '';
     for (const item of phonesCopy) {
@@ -59,7 +58,7 @@ function generateList() {
           </div>`
         listContainerEl.append(phoneItem);
     }
-    phonesCopy = phones;
+    phonesCopy = [...phones];
 }
 // ==========================================
 function sortPhones() {

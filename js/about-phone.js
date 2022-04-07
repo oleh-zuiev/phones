@@ -27,6 +27,7 @@ function generateAboutPageContainer(phoneAgeLikeId) {
 }
 // ========================================
 function generateAboutPage() {
+  console.log('check-inx',inxOfChosenPhone);
 aboutPhoneEl.innerHTML=` <section class="overview _flex">
         <div class="big-img-container">
           <img class="big-img" src=${phones[inxOfChosenPhone].imageUrl} alt="#" />
@@ -41,7 +42,8 @@ aboutPhoneEl.innerHTML=` <section class="overview _flex">
         </div>
       </section>
       <section class="specs">       
-      </section>`    
+      </section>`  
+  console.log(aboutPhoneEl.innerHTML);
 }
 function generateThumbs() {
     for (const item of thumbsArr) {
