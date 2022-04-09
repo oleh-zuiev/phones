@@ -4,6 +4,7 @@
   margin: 0;
   border: 0;
 }
+
 *,
 *:before,
 *:after {
@@ -11,10 +12,12 @@
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
+
 :focus,
 :active {
   outline: none;
 }
+
 a:focus,
 a:active {
   outline: none;
@@ -38,6 +41,7 @@ body {
   -moz-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
+
 input,
 button,
 textarea {
@@ -47,23 +51,29 @@ textarea {
 input::-ms-clear {
   display: none;
 }
+
 button {
   cursor: pointer;
 }
+
 button::-moz-focus-inner {
   padding: 0;
   border: 0;
 }
+
 a,
 a:visited {
   text-decoration: none;
 }
+
 a:hover {
   text-decoration: none;
 }
+
 ul li {
   list-style: none;
 }
+
 img {
   /* vertical-align: top; */
   /* max-width: 100%;
@@ -82,10 +92,12 @@ h6 {
   font-size: inherit;
   font-weight: 400;
 }
+
 /* ====================================== */
 .test {
   color: green;
 }
+
 html {
   font-size: 100%;
 
@@ -99,14 +111,16 @@ html {
     font-size: calc(137.5%);
   }
 }
+
 ul,
 ol {
   list-style: none;
 }
+
 /* technical classes */
 ._main-container {
   margin: auto;
-  max-width: 1200px;
+  max-width: 1500px;
   font-size: 1rem;
   position: relative;
   padding: 2rem;
@@ -115,14 +129,17 @@ ol {
   font-family: "Open Sans", sans-serif;
   /* padding-top: 55px; */
 }
+
 ._flex {
   display: flex;
 }
+
 ._center {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 ._comumn {
   flex-direction: column;
 }
@@ -135,14 +152,16 @@ ol {
   width: 100%;
   /* margin: 50px 0px; */
 }
+
 /* ==============input fields================== */
 #search,
 #order {
   border: 1px solid #767676;
 }
+
 /* ============================================ */
-.phones-list {
-}
+.phones-list {}
+
 .phone-item {
   border: 1px solid #767676;
   border-radius: 5px;
@@ -151,48 +170,121 @@ ol {
   align-items: center;
   padding: 1rem;
 }
+
 .phone-prev {
   width: 100px;
   height: 100px;
 }
+
 .phone-info {
   margin-left: 2rem;
 }
+
 .phone-title {
   color: #23527c;
 }
-.phone-description {
-}
+
+.phone-description {}
+
 .hidden {
   display: none;
 }
+
 /* ==========about-phone page============ */
-.overview {
-}
+.overview {}
+
 .big-img-container {
-  transition: 0.5s linear all;
-}
-.big-img {
+  /* transition: 0.5s linear all; */
+  overflow: hidden;
+  position: relative;
+  /* border: 3px dotted purple; */
   width: 400px;
   height: 400px;
+  margin-right: 3rem;
+}
+
+.big-img-higher {
+  position: absolute;
+  top: -400px;
+  left: 0px;
+  width: 100%;
+  height: auto;
+  margin-right: 3rem;
   /* transition: 0.5s linear all; */
 }
-.thumbnails-container {
+
+.big-img {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: auto;
+  margin-right: 3rem;
+  /* transition: 0.5s linear all; */
 }
+
+.big-img-lower {
+  position: absolute;
+  top: 400px;
+  left: 0px;
+  width: 100%;
+  height: auto;
+  margin-right: 3rem;
+  /* transition: 0.5s linear all; */
+}
+
+.big-img.animation-main-img {
+  animation-name: main-img;
+  animation-duration: 500ms;
+  animation-fill-mode: forwards;
+}
+
+.big-img-lower.animation-low-img {
+  animation-name: low-img;
+  animation-duration: 500ms;
+  animation-fill-mode: forwards;
+}
+
+@keyframes main-img {
+  from {
+    top: 0px;
+  }
+
+  to {
+    top: -400px;
+  }
+}
+
+@keyframes low-img {
+  from {
+    top: 400px;
+  }
+
+  to {
+    top: 0px;
+  }
+}
+
+.thumbnails-container {}
+
 .title {
-  font-size: 36px;
+  font-size: 1.5rem;
   font-weight: 500;
 }
+
 .general-info {
+  font-size: 1rem;
   text-align: justify;
   padding: 1rem 0rem;
 }
+
 .thumbs-list {
   padding: 1rem 0rem;
   flex-wrap: wrap;
   justify-content: space-around;
   padding: 1rem 0rem;
 }
+
 .thumb {
   /* display: flex;
   align-items: center;
@@ -202,22 +294,25 @@ ol {
   height: auto;
   margin: 0.5rem 0.5rem 0rem 0rem;
 }
-.specs {
-}
+
+.specs {}
+
 .specs-list {
   /* justify-content: space-between; */
   justify-content: space-evenly;
   flex-wrap: wrap;
 }
-.specs-item {
-}
+
+.specs-item {}
+
 .spec-title {
   font-size: 16px;
   font-weight: bold;
 }
+
 .spec-subtitle {
   font-size: 14px;
   font-weight: bold;
 }
-.text {
-}
+
+.text {}
